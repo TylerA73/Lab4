@@ -11,26 +11,29 @@ import java.awt.Rectangle;
  *
  * @author Tyler
  */
-public class ResizeCommand implements Command{
-    Rectangle r;
-    int height;
+public class InitCommand implements Command {
+    int x;
+    int y;
     int width;
+    int height;
+    Rectangle r;
     
-    
-    ResizeCommand(int w, int h, Rectangle r){
+    InitCommand(int x, int y, int w, int h, Rectangle r){
+        this.x = x;
+        this.y = y;
+        this.width = w;
+        this.height = h;
         this.r = r;
-        width = w;
-        height = h;
     }
     
     @Override
-    public void execute(){
-        this.r.setSize(width, height);
+    public void execute() {
+        r.setBounds(x, y, width, height);
     }
-    
+
     @Override
-    public void undo(){
-        
+    public void undo() {
+
     }
     
 }

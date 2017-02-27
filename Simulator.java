@@ -11,7 +11,7 @@ public class Simulator {
     public static void main(String[] args) {
         // UndoManager is an object that manages command objects
         // You may use a different object to enable undo
-        // UndoManager undoManager = new UndoManager();
+        UndoManager undoManager = new UndoManager();
         System.out.println("Simulation");
 
         // Create two default rectangle objects
@@ -23,31 +23,35 @@ public class Simulator {
         // Create a command object to move r1 to a new location
         Command moveRect1 = new MoveCommand(5, 10, r1);
         moveRect1.execute();
-        // undoManager.add(moveRect1);
+        undoManager.add(moveRect1);
         System.out.println("--Move rectangle1 to (5, 10): " + r1);
         
         // Undo the last action
-        // undoManager.undo();
+        undoManager.undo();
         System.out.println("--Undo, rectangle1 back to: " + r1);
         
         // ditto above... add code to simulate a certain user action
         Command resizeRect1 = new ResizeCommand(5, 10, r1);
         resizeRect1.execute();
+        undoManager.add(resizeRect1);
         System.out.println("--Resize rectangle1 to 5 by 10: " + r1);
 
         // ditto above... add code to simulate a certain user action
         Command resizeRect2 = new ResizeCommand(8, 12, r2);
         resizeRect2.execute();
+        undoManager.add(resizeRect2);
         System.out.println("--Resize rectangle2 to 8 by 12: " + r2);
         
         // ditto above... add code to simulate a certain user action
-        
+        Command moveRect2 = new MoveCommand(10, 20, r2);
+        moveRect2.execute();
+        undoManager.add(moveRect2);
         System.out.println("--Move rectangle2 to (10, 20): " + r2);
 
-        // undoManager.undo();
+        undoManager.undo();
         System.out.println("--Undo, rectangle2 back to: " + r2);
 
-        // undoManager.undo();
+        undoManager.undo();
         System.out.println("--Undo, rectangle2 back to: " + r2);
     }
 }
