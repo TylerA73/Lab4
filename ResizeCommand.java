@@ -5,15 +5,25 @@
  */
 package lab4;
 
+import java.awt.Rectangle;
+
 /**
  *
  * @author Tyler
  */
 public class ResizeCommand implements Command{
+    Rectangle r;
+    int height;
+    int width;
+    
+    
+    ResizeCommand(int w, int h, Rectangle r){
+        this.r = r;
+    }
     
     @Override
     public void execute(){
-        
+        this.r.setSize(width, height);
     }
     
     @Override

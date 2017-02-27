@@ -5,15 +5,32 @@
  */
 package lab4;
 
+import java.awt.Rectangle;
+
 /**
  *
  * @author Tyler
  */
 public class MoveCommand implements Command {
+    int x;
+    int y;
+    Rectangle r;
+    
+    MoveCommand(){
+        x = 0;
+        y = 0;
+        r = new Rectangle();
+    }
+    
+    MoveCommand(int x, int y, Rectangle r){
+        this.x = x;
+        this.y = y;
+        this.r = r;
+    }
     
     @Override
     public void execute(){
-        
+        this.r.setLocation(this.x, this.y);
     }
     
     @Override

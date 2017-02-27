@@ -21,8 +21,8 @@ public class Simulator {
         System.out.println("--Create a default rectangle2: " + r2);
 
         // Create a command object to move r1 to a new location
-        // Command moveRect1 = new ... (add your code here)
-        // moveRect1.execute();
+        Command moveRect1 = new MoveCommand(5, 10, r1);
+        moveRect1.execute();
         // undoManager.add(moveRect1);
         System.out.println("--Move rectangle1 to (5, 10): " + r1);
         
@@ -31,12 +31,17 @@ public class Simulator {
         System.out.println("--Undo, rectangle1 back to: " + r1);
         
         // ditto above... add code to simulate a certain user action
+        Command resizeRect1 = new ResizeCommand(5, 10, r1);
+        resizeRect1.execute();
         System.out.println("--Resize rectangle1 to 5 by 10: " + r1);
 
         // ditto above... add code to simulate a certain user action
+        Command resizeRect2 = new ResizeCommand(8, 12, r2);
+        resizeRect2.execute();
         System.out.println("--Resize rectangle2 to 8 by 12: " + r2);
         
         // ditto above... add code to simulate a certain user action
+        
         System.out.println("--Move rectangle2 to (10, 20): " + r2);
 
         // undoManager.undo();
