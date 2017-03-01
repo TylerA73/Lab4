@@ -15,12 +15,16 @@ public class ResizeCommand implements Command{
     Rectangle r;
     int height;
     int width;
+    int lastWidth;
+    int lastHeight;
     
     
     ResizeCommand(int w, int h, Rectangle r){
         this.r = r;
-        width = w;
-        height = h;
+        this.width = w;
+        this.height = h;
+        this.lastWidth = r.width;
+        this.lastHeight = r.height;
     }
     
     @Override
@@ -30,7 +34,10 @@ public class ResizeCommand implements Command{
     
     @Override
     public void undo(){
+        this.width = lastWidth;
+        this.height = lastHeight;
         
+        execute();
     }
     
 }

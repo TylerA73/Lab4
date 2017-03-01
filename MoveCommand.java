@@ -16,16 +16,16 @@ public class MoveCommand implements Command {
     int y;
     Rectangle r;
     
-    MoveCommand(){
-        x = 0;
-        y = 0;
-        r = new Rectangle();
-    }
+    int lastX;
+    int lastY;
     
     MoveCommand(int x, int y, Rectangle r){
         this.x = x;
         this.y = y;
         this.r = r;
+        
+        this.lastX = r.x;
+        this.lastY = r.y;
     }
     
     @Override
@@ -35,7 +35,10 @@ public class MoveCommand implements Command {
     
     @Override
     public void undo(){
+        this.x = lastX;
+        this.y = lastY;
         
+        execute();
     }
     
 }

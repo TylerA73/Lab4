@@ -13,17 +13,16 @@ import java.util.Stack;
  */
 public class UndoManager {
     Stack<Command> undo;
-    Command last;
     
     UndoManager(){
         undo = new Stack();
     }
     
     public void add(Command cmd){
-        
+        undo.push(cmd);
     }
     
     public void undo(){
-        
+        undo.pop().undo();
     }
 }
