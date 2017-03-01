@@ -8,7 +8,10 @@ package lab4;
 import java.awt.Rectangle;
 
 /**
- *
+ * ResizeCommand
+ * Implements Command interface
+ * Handles the resizing of a rectangle.
+ * 
  * @author Tyler
  */
 public class ResizeCommand implements Command{
@@ -18,7 +21,13 @@ public class ResizeCommand implements Command{
     int lastWidth;
     int lastHeight;
     
-    
+    /**
+     * Constructor for the resize command.
+     * 
+     * @param w     New width of the rectangle
+     * @param h     New height of the rectangle
+     * @param r     Rectangle to be resized
+     */
     ResizeCommand(int w, int h, Rectangle r){
         this.r = r;
         this.width = w;
@@ -27,11 +36,17 @@ public class ResizeCommand implements Command{
         this.lastHeight = r.height;
     }
     
+    /**
+     * Executes the resize command
+     */
     @Override
     public void execute(){
         this.r.setSize(width, height);
     }
     
+    /**
+     * Undoes the last resize command
+     */
     @Override
     public void undo(){
         this.width = lastWidth;
